@@ -63,7 +63,7 @@ class Lesson extends LessonData {
         this.resetResponse();
         this.resetAnswer();
         this.updateView(false, false, 'new')
-        const currentLesson = new Lesson(elements, 2);
+        const currentLesson = new Lesson(elements, 10);
         currentLesson.init();
     }
 
@@ -205,6 +205,6 @@ const elements = {
     newSession: document.getElementById('js-new'),
 }
 
-const currentLesson = new Lesson(elements, 5);
+const currentLesson = new Lesson(elements, 10);
 
 currentLesson.init();
