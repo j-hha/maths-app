@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathe App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <h1>Mathe App</h1>
+    </header>
+    <main class="main">
+        <div class="card">
+            <div class="card__header">
+                <span class="card__number" id="js-factor-1">1</span>
+                <span class="card__symbol">x</span>
+                <span class="card__number" id="js-factor-2">1</span>
+            </div>
+            <form class="form" id="js-form" autocomplete="off">
+                <fieldset class="form__fieldset">
+                    <legend class="form__legend">Rechne aus</legend>
+                    <label class="form__label"  htmlfor="js-input">
+                        <span class="form__label-text">Lösung:</span>
+                        <input autocomplete="false" class="form__input" type="text" id="js-input" />
+                    </label>
+                    <button 
+                        id="js-submit" 
+                        class="button__submit" 
+                        type="submit"
+                    >Prüfen</button>
+                </fieldset>
+            </form>
+            <div class="response">
+                <span id="js-response" class="response__text"></span>
+                <button class="button__next" id="js-next" type="button">
+                    <span class="sr-only">Nächste Aufgabe</span>
+                </button>
+                <button class="button__new" id="js-new" type="button">
+                    <span class="sr-only">Neue Runde</span>
+                </button>
+            </div>
+        </div>
+    </main>
+    <script src="script.js" type="text/javascript"></script>
+</body>
+</html>
