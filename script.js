@@ -66,6 +66,7 @@ class LessonData {
             );
         }
 
+        console.log(result)
         return result;
     }
 
@@ -153,7 +154,7 @@ class Lesson extends LessonData {
             throw new Error('Rechne bitte noch mal nach. Dieses Ergebnis stimmt leider nicht.');
         }
 
-        if (exerciseIndex === this.numOfLessons - 1) {
+        if (exerciseIndex === this.numOfLessons) {
             this.updateView(true, true, 'new')
             this.showResponse(`Super! ${answer} ist korrekt! Du hast hast alle Aufgaben gelöst.`);
         } else {
