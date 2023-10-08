@@ -1,17 +1,67 @@
 
-class LessonData {
-    constructor(numOfLessons) {
-        this.lessonData = this.generateLessonData(numOfLessons); 
+const insertCard = () => {
+    const main = document.getElementById("main");
+    const template = document.querySelector("#lesson-card");
+    const clone = template.content.cloneNode(true);
+    main.appendChild(clone);
+};
+
+const insertLessonSelect = () => {
+    const main = document.getElementById("main");
+    const template = document.querySelector("#lesson-select");
+
+    for (let i = 0; i <= 10; i++) {
+        const clone = template.content.cloneNode(true);
+        const button = clone.querySelector("button");
+        const buttonValue = i.toString();
+        button.textContent = buttonValue;
+        button.addEventListener('click', () => {
+            main.innerHTML = '';
+            insertCard();
+            const currentLesson = new Lesson(10, buttonValue);
+            currentLesson.init();
+        });
+        main.appendChild(clone);
     }
 
-    generateLessonData(numOfLessons = 0) {
-        const result = [];
+        const clone = template.content.cloneNode(true);
+        const button = clone.querySelector("button");
+        const buttonValue = 'Zufall';
+        button.textContent = buttonValue;
+        button.addEventListener('click', () => {
+            main.innerHTML = '';
+            insertCard();
+            const currentLesson = new Lesson(10, buttonValue);
+            currentLesson.init();
+        });
+        main.appendChild(clone);
+};
 
-        for (let i=0; i < numOfLessons; i++) {
+class LessonData {
+    constructor(numOfLessons, lessonType) {
+        this.lessonData = this.generateLessonData(numOfLessons, lessonType); 
+    }
+
+    generateLessonData(numOfLessons = 0, lessonType='1') {
+        const result = [];
+        let factor = 0;
+        
+        if (isNaN(parseInt(lessonType, 10))) {
+            for (let i=0; i < numOfLessons; i++) {
+                result.push(
+                    {
+                        factor1: this.generateRandomNum(0, 10),
+                        factor2: this.generateRandomNum(0, 10),
+                    }
+                );
+            }
+        }
+
+        for (let i=0; i <= 10; i++) {
             result.push(
                 {
-                    factor1: this.generateNum(0, 10),
-                    factor2: this.generateNum(0, 10),
+                    factor1: i,
+                    factor2: lessonType,
                 }
             );
         }
@@ -19,7 +69,7 @@ class LessonData {
         return result;
     }
 
-    generateNum(min, max) {
+    generateRandomNum(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min) + min);   
@@ -27,22 +77,31 @@ class LessonData {
 }
 
 class Lesson extends LessonData {
-    constructor(elements, numOfLessons) {
-        super(numOfLessons);
+    constructor(numOfLessons, lessonType) {
+        super(numOfLessons, lessonType);
         this.progress = {
             exerciseIndex: 0,
             correctAnswers: 0,
             incorrectAnswers: 0,
         };
-        this.elements = elements;
-        this.numOfLessons = numOfLessons;
 
+        this.numOfLessons = numOfLessons;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.checkAnswer = this.checkAnswer.bind(this);
         this.next = this.next.bind(this);
         this.newLesson = this.newLesson.bind(this);
 
+        this.elements = {
+            form: document.getElementById('js-form'),
+            input: document.getElementById('js-input'),
+            response: document.getElementById('js-response'),
+            factor1: document.getElementById('js-factor-1'),
+            factor2: document.getElementById('js-factor-2'),
+            next: document.getElementById('js-next'),
+            submit: document.getElementById('js-submit'),
+            newSession: document.getElementById('js-new'),
+        }
     }
 
     updateProgress(newVal) {
@@ -62,9 +121,8 @@ class Lesson extends LessonData {
     newLesson() {
         this.resetResponse();
         this.resetAnswer();
-        this.updateView(false, false, 'new')
-        const currentLesson = new Lesson(elements, 10);
-        currentLesson.init();
+        main.innerHTML = '';
+        insertLessonSelect();
     }
 
     init() {
@@ -194,17 +252,4 @@ class Lesson extends LessonData {
     }
 }
 
-const elements = {
-    form: document.getElementById('js-form'),
-    input: document.getElementById('js-input'),
-    response: document.getElementById('js-response'),
-    factor1: document.getElementById('js-factor-1'),
-    factor2: document.getElementById('js-factor-2'),
-    next: document.getElementById('js-next'),
-    submit: document.getElementById('js-submit'),
-    newSession: document.getElementById('js-new'),
-}
-
-const currentLesson = new Lesson(elements, 10);
-
-currentLesson.init();
+insertLessonSelect();

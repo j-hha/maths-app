@@ -37,16 +37,48 @@ body {
 }
 
 .main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.lesson-select {
+    flex: 1 1 300px;
+    margin: 5px;
+    width: auto;
+    height: 100px;
+    font-size: 40px;
+    padding: var(--spacing-m);
+    color: var(--black);
+    transition: all .3s linear;
+    background-color: var(--violet-medium);
+    border: 3px solid var(--violet-medium);
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 6px var(--black);
+}
+
+.lesson-select:hover {
+    background-color: var(--green);
+    border-color: var(--green);
+}
+
+.lesson-select:active {
+    background-color: var(--violet-light);
+    border: 3px solid var(--violet-light);
 }
 
 .card {
     border-radius: var(--radius-outer);
     max-width: 500px;
-    min-width: 300px;
     margin: 0 auto;
     overflow: hidden;
     background-color: var(--violet-light);
     box-shadow: 3px 3px 12px var(--black);
+    flex: 1 1 300px;
 }
 
 .card__header {
@@ -89,6 +121,7 @@ body {
     height: 48px;
     border: 0;
     border-bottom: 2px solid var(--violet);
+    border-radius: 0;
     margin: var(--spacing-s);
     flex: 1 1 50px;
 }
