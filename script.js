@@ -48,12 +48,14 @@ class LessonData {
         const parsedLessonType = parseInt(lessonType, 10);
         
         if (typeof parsedLessonType === 'number' && !isNaN(parsedLessonType)) {
-            result.push(
-                {
-                    factor1: i,
-                    factor2: lessonType,
-                }
-            ); 
+            for (let i=0; i <= numOfLessons; i++) {
+                result.push(
+                    {
+                        factor1: i,
+                        factor2: lessonType,
+                    }
+                ); 
+            }
 
             return result;
         }
