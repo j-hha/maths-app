@@ -45,28 +45,28 @@ class LessonData {
     generateLessonData(numOfLessons = 0, lessonType='1') {
         const result = [];
         let factor = 0;
+        const parsedLessonType = parseInt(lessonType, 10);
         
-        if (isNaN(parseInt(lessonType, 10))) {
-            for (let i=0; i < numOfLessons; i++) {
-                result.push(
-                    {
-                        factor1: this.generateRandomNum(0, 10),
-                        factor2: this.generateRandomNum(0, 10),
-                    }
-                );
-            }
-        }
-
-        for (let i=0; i <= 10; i++) {
+        if (typeof parsedLessonType === 'number' && !isNaN(parsedLessonType)) {
             result.push(
                 {
                     factor1: i,
                     factor2: lessonType,
                 }
+            ); 
+
+            return result;
+        }
+
+        for (let i=0; i <= numOfLessons; i++) {
+            result.push(
+                {
+                    factor1: this.generateRandomNum(0, 10),
+                    factor2: this.generateRandomNum(0, 10),
+                }
             );
         }
 
-        console.log(result)
         return result;
     }
 
@@ -120,6 +120,7 @@ class Lesson extends LessonData {
     }
 
     newLesson() {
+        console.log('new Lesson')
         this.resetResponse();
         this.resetAnswer();
         main.innerHTML = '';
@@ -156,7 +157,7 @@ class Lesson extends LessonData {
 
         if (exerciseIndex === this.numOfLessons) {
             this.updateView(true, true, 'new')
-            this.showResponse(`Super! ${answer} ist korrekt! Du hast hast alle Aufgaben gelöst.`);
+            this.showResponse(`Super! ${answer} ist korrekt! Du hast alle Aufgaben gelöst.`);
         } else {
             this.updateView(true, true, 'next')
             this.showResponse(`Super! ${answer} ist korrekt! Weiter so!`);
