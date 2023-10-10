@@ -61,9 +61,11 @@ body {
     box-shadow: 2px 2px 6px var(--black);
 }
 
-.lesson-select:hover {
-    background-color: var(--green);
-    border-color: var(--green);
+@media (hover: hover) {
+    .lesson-select:hover {
+        background-color: var(--green);
+        border-color: var(--green);
+    }
 }
 
 .lesson-select:active {
@@ -145,9 +147,11 @@ body {
     border: 3px solid var(--violet);
 }
 
-.button__submit:hover:not(:disabled) {
-    background-color: var(--black);
-    border-color: var(--black);
+@media (hover: hover) {
+    .button__submit:hover:not(:disabled) {
+        background-color: var(--black);
+        border-color: var(--black);
+    }
 }
 
 .button__submit:active:not(:disabled) {
@@ -177,9 +181,11 @@ body {
     font-size: 40px;
 }
 
-.button__next:hover {
-    background-color: var(--orange);
-    border-color: var(--orange);
+@media (hover: hover) {
+    .button__next:hover {
+        background-color: var(--orange);
+        border-color: var(--orange);
+    }
 }
 
 .button__next:active {
@@ -209,9 +215,11 @@ body {
     font-size: 40px;
 }
 
-.button__new:hover {
-    background-color: var(--pink);
-    border-color: var(--pink);
+@media (hover: hover) {
+    .button__new:hover {
+        background-color: var(--pink);
+        border-color: var(--pink);
+    }
 }
 
 .button__new:active {
