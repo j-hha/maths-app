@@ -30,6 +30,9 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
 }
 
 .header {
@@ -73,6 +76,11 @@ body {
     display: flex;
 }
 
+#js-timer {
+    display: none;
+    /*remove eventually*/
+}
+
 .main-nav__item {
     padding: var(--spacing-s);
     appearance: none;
@@ -87,12 +95,15 @@ body {
 }
 
 .main {
+    max-width: 1200px;
+    width: 100%;
+    grid-column: 1 / span 1;
+    justify-self: center;
     padding: var(--spacing-l);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    height: 100%;
+    align-content: center;
 }
 
 .lesson-select {

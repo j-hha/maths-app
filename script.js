@@ -104,6 +104,10 @@ class Lesson extends LessonData {
             next: document.getElementById('js-next'),
             submit: document.getElementById('js-submit'),
             newSession: document.getElementById('js-new'),
+            home: document.getElementById('js-home'),
+            mainNav: document.getElementById('js-main-nav'),
+            main: document.getElementById("main"),
+
         }
     }
 
@@ -122,20 +126,24 @@ class Lesson extends LessonData {
     }
 
     newLesson() {
-        console.log('new Lesson')
+        const { main, mainNav } = this.elements;
         this.resetResponse();
         this.resetAnswer();
         main.innerHTML = '';
+        mainNav.classList.remove('main-nav--visible');
         insertLessonSelect();
     }
 
     init() {
-        const { form, input, next, newSession} = this.elements;
+        const { form, input, next, newSession, home, mainNav} = this.elements;
         this.generateExercise();
         form.addEventListener('submit', this.handleSubmit);
         input.addEventListener('change', this.handleChange);
         next.addEventListener('click', this.next);
         newSession.addEventListener('click', this.newLesson);
+        mainNav.classList.add('main-nav--visible');
+        console.log(home)
+        home.addEventListener('click', this.newLesson);
     }
 
     next() {
