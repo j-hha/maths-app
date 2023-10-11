@@ -88,6 +88,17 @@ body {
     background-color: transparent;
     color: var(--black);
     font-size: 40px;
+    transition: transform linear .3s;
+}
+
+.main-nav__item:focus {
+    transform: scale(1.2); 
+}
+
+@media (hover: hover) {
+    .main-nav__item:hover {
+        transform: scale(1.2); 
+    }
 }
 
 .main-nav__item:not(:first-of-type) {
