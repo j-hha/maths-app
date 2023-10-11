@@ -11,7 +11,18 @@
 </head>
 <body>
     <template id="lesson-select">
-        <button class="lesson-select"></button>
+        <div class="lesson-select">
+            <h2 class="lesson-select__title"></h2>
+            <button class="lesson-select__button" data-mode="regular">Vorwärts</button>
+            <button class="lesson-select__button" data-mode="reverse">Rückwärts</button>
+            <button class="lesson-select__button" data-mode="random">Zufall</button>
+        </div>
+    </template>
+    <template id="lesson-select--random">
+        <div class="lesson-select">
+            <h2 class="lesson-select__title"></h2>
+            <button class="lesson-select__button" data-mode="random">Start</button>
+        </div>
     </template>
     <template id="lesson-card">
         <div class="card">

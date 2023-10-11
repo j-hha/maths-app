@@ -110,30 +110,47 @@ body {
     flex: 1 1 300px;
     margin: 5px;
     width: auto;
-    height: 100px;
     font-size: 40px;
-    padding: var(--spacing-m);
+    padding: var(--spacing-m) 0 0;
     color: var(--black);
-    transition: all .3s linear;
-    background-color: var(--violet-medium);
-    border: 3px solid var(--violet-medium);
     overflow: hidden;
-    align-items: center;
+    display: flex;
+    align-items: stretch;
     justify-content: center;
     border-radius: 5px;
     box-shadow: 2px 2px 6px var(--black);
+    background-color: var(--violet-medium);
+    flex-wrap: wrap;
+}
+
+.lesson-select__title {
+    width: 100%;
+    padding: var(--spacing-m);
+    margin: 0;
+    text-align: center;
+}
+
+.lesson-select__button {
+    transition: all .3s linear;
+    background-color: var(--violet-light);
+    border: 0;
+    font-size: 18px;
+    flex: 1 1 auto;
+    padding: var(--spacing-m);
+}
+
+.lesson-select__button:not(:last-of-type) {
+    border-right: 2px solid var(--violet-medium);
 }
 
 @media (hover: hover) {
-    .lesson-select:hover {
+    .lesson-select__button:hover {
         background-color: var(--green);
-        border-color: var(--green);
     }
 }
 
-.lesson-select:active {
+.lesson-select__button:active {
     background-color: var(--violet-light);
-    border: 3px solid var(--violet-light);
 }
 
 .card {

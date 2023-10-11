@@ -1,4 +1,12 @@
 
+const shuffle = (array) => { // based on https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript/
+    for (let i = array.length - 1; i > 0; i--) { 
+      const j = Math.floor(Math.random() * (i + 1)); 
+      [array[i], array[j]] = [array[j], array[i]]; 
+    } 
+    return array; 
+  }; 
+
 const insertCard = () => {
     const main = document.getElementById("main");
     const template = document.querySelector("#lesson-card");
@@ -12,42 +20,62 @@ const insertLessonSelect = () => {
 
     for (let i = 0; i <= 10; i++) {
         const clone = template.content.cloneNode(true);
-        const button = clone.querySelector("button");
-        const buttonValue = i.toString();
-        button.textContent = buttonValue;
-        button.addEventListener('click', () => {
-            main.innerHTML = '';
-            insertCard();
-            const currentLesson = new Lesson(10, buttonValue);
-            currentLesson.init();
+        const heading = clone.querySelector('.lesson-select__title');
+        const number = i.toString();
+        heading.textContent = number;
+
+        const buttons = clone.querySelectorAll('.lesson-select__button');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                main.innerHTML = '';
+                insertCard();
+                const currentLesson = new Lesson(10, number, button.dataset.mode);
+                currentLesson.init();
+            })
         });
         main.appendChild(clone);
     }
 
-        const clone = template.content.cloneNode(true);
-        const button = clone.querySelector("button");
-        const buttonValue = 'Zufall';
-        button.textContent = buttonValue;
-        button.addEventListener('click', () => {
-            main.innerHTML = '';
-            insertCard();
-            const currentLesson = new Lesson(10, buttonValue);
-            currentLesson.init();
-        });
-        main.appendChild(clone);
+    const templateRandom = document.querySelector("#lesson-select--random");
+    const clone = templateRandom.content.cloneNode(true);
+    const heading = clone.querySelector('.lesson-select__title');
+    const button = clone.querySelector("button");
+    const title = 'Zufall';
+    const buttonValue = 'Start'
+    heading.textContent = title;
+    button.addEventListener('click', () => {
+        main.innerHTML = '';
+        insertCard();
+        const currentLesson = new Lesson(10, buttonValue, 'random');
+        currentLesson.init();
+    });
+    main.appendChild(clone);
 };
 
 class LessonData {
-    constructor(numOfLessons, lessonType) {
-        this.lessonData = this.generateLessonData(numOfLessons, lessonType); 
+    constructor(numOfLessons, lessonType, mode) {
+        this.lessonData = this.generateLessonData(numOfLessons, lessonType, mode); 
     }
 
-    generateLessonData(numOfLessons = 0, lessonType='1') {
+    generateLessonData(numOfLessons = 0, lessonType='1', mode='regular') {
+        console.log(mode)
         const result = [];
-        let factor = 0;
         const parsedLessonType = parseInt(lessonType, 10);
+        const isRow = typeof parsedLessonType === 'number' && !isNaN(parsedLessonType);
+
+        if(isRow && mode === 'reverse') {
+            for (let i=numOfLessons; i >= 0; i--) {
+                result.push(
+                    {
+                        factor1: i,
+                        factor2: parsedLessonType,
+                    }
+                ); 
+            }
+            return result; 
+        }
         
-        if (typeof parsedLessonType === 'number' && !isNaN(parsedLessonType)) {
+        if (isRow && (mode === 'regular' || mode === 'random')) {
             for (let i=0; i <= numOfLessons; i++) {
                 result.push(
                     {
@@ -57,8 +85,13 @@ class LessonData {
                 ); 
             }
 
+            if(mode === 'random') {
+                return shuffle(result); 
+            }
+
             return result;
         }
+
 
         for (let i=0; i <= numOfLessons; i++) {
             result.push(
@@ -80,8 +113,8 @@ class LessonData {
 }
 
 class Lesson extends LessonData {
-    constructor(numOfLessons, lessonType) {
-        super(numOfLessons, lessonType);
+    constructor(numOfLessons, lessonType, mode) {
+        super(numOfLessons, lessonType, mode);
         this.progress = {
             exerciseIndex: 0,
             correctAnswers: 0,
