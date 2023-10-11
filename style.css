@@ -28,19 +28,71 @@ body {
     background-position: center center;
     background-size: cover;
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    padding: var(--spacing-m);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, .5);
 }
 
 .title {
+    margin: 0;
     text-align: center;
     font-weight: normal;
-    color: white;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title__icon {
+    font-size: 60px;
+    padding: var(--spacing-s);
+    text-align: right;
+}
+
+.title__text {
+    text-align: left;
+    font-size: 30px;
+    font-weight: lighter;
+    padding: var(--spacing-s);
+    border-left: 1px solid var(--black);
+}
+
+.main-nav {
+    display: none;
+    justify-content: flex-end;
+}
+
+.main-nav--visible {
+    display: flex;
+}
+
+.main-nav__item {
+    padding: var(--spacing-s);
+    appearance: none;
+    border: 0;
+    background-color: transparent;
+    color: var(--black);
+    font-size: 40px;
+}
+
+.main-nav__item:not(:first-of-type) {
+    border-left: 1px solid var(--black);
 }
 
 .main {
+    padding: var(--spacing-l);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    height: 100%;
 }
 
 .lesson-select {
