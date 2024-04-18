@@ -77,8 +77,9 @@ class LessonView {
         const { next, input, submit, form } = this.elements;
         const { exerciseIndex, correctAnswers, incorrectAnswers } = this.progress;
         const result = this.lessonData[exerciseIndex].factor1 * this.lessonData[exerciseIndex].factor2;
+        const cleanAnswer = answer.replace(/^0+/, '');
 
-        if(result !== parseInt(answer)) {
+        if(result !== parseInt(cleanAnswer)) {
             this.updateProgress({ 
                 incorrectAnswers: incorrectAnswers+1,
             });
@@ -87,10 +88,10 @@ class LessonView {
 
         if (exerciseIndex === this.numOfLessons-1) {
             this.updateView(true, true, 'new')
-            this.showResponse(`Super! ${answer} ist korrekt! Du hast alle Aufgaben gelöst.`);
+            this.showResponse(`Super! ${cleanAnswer} ist korrekt! Du hast alle Aufgaben gelöst.`);
         } else {
             this.updateView(true, true, 'next')
-            this.showResponse(`Super! ${answer} ist korrekt! Weiter so!`);
+            this.showResponse(`Super! ${cleanAnswer} ist korrekt! Weiter so!`);
         }
 
         this.updateProgress({ 
