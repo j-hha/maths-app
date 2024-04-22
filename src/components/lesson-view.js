@@ -62,7 +62,6 @@ class LessonView {
         next.addEventListener('click', this.next);
         newSession.addEventListener('click', this.newLesson);
         mainNav.classList.add('main-nav--visible');
-        console.log(home)
         home.addEventListener('click', this.newLesson);
     }
 
@@ -77,9 +76,9 @@ class LessonView {
         const { next, input, submit, form } = this.elements;
         const { exerciseIndex, correctAnswers, incorrectAnswers } = this.progress;
         const result = this.lessonData[exerciseIndex].factor1 * this.lessonData[exerciseIndex].factor2;
-        const cleanAnswer = answer.replace(/^0+/, '');
+        const cleanAnswer = parseInt(answer) !== 0? answer.replace(/^0+/, '') : answer.replace(/^0+/, '0');
 
-        if(result !== parseInt(cleanAnswer)) {
+        if(result !== parseInt(answer)) {
             this.updateProgress({ 
                 incorrectAnswers: incorrectAnswers+1,
             });
@@ -175,7 +174,6 @@ class LessonView {
         const {input: { value } } = this.elements;
         this.resetResponse();
         event.preventDefault();
-        console.log('submitting', value);
     
         try {
             this.validateForm(value);
