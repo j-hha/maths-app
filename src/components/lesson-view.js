@@ -131,6 +131,8 @@ class LessonView {
         } else {
             button.classList.remove(`button__${buttonType}--visible`);
         }
+
+        input.focus({ focusVisible: true });
     }
 
     validateForm(data) {
