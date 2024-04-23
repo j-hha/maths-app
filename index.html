@@ -10,6 +10,8 @@
     <link href="./assets/font-awesome/css/solid.css" rel="stylesheet">
 </head>
 <body>
+    <!-- ****** templates start ******-->
+    <!-- ****** lesson select templates ******-->
     <template id="lesson-select__main-heading">
         <h2 class="lesson-select__main-heading">Wähle eine Malfolge</h2>
     </template>
@@ -27,6 +29,7 @@
             <button class="lesson-select__button" data-mode="random">Start</button>
         </div>
     </template>
+    <!-- ****** lesson card template ******-->
     <template id="lesson-card">
         <div class="card" id="js-card">
             <h2 js="js-card-header" class="card__header" aria-live="polite">
@@ -58,12 +61,31 @@
                 <button class="button__next" id="js-next" type="button">
                     <span class="sr-only">Nächste Aufgabe</span>
                 </button>
-                <button class="button__new" id="js-new" type="button">
-                    <span class="sr-only">Zurück zur Auswahl</span>
+                <button class="button__stats" id="js-stats" type="button" title="Zur Auswertung">
+                    <i class="fa-solid fa-ranking-star"></i>
+                    <span class="sr-only">Zur Auswertung</span>
                 </button>
             </div>
         </div>
     </template>
+    <!-- ****** lesson stats template ******-->
+    <template id="lesson-stats">
+        <div class="lesson-stats">
+            <h2 class="lesson-stats__heading">So lief Deine Übungsrunde</h2>
+            <span class="lesson-stats__message" id="js-lesson-stats-message"></span>
+            <hr class="lesson-stats__divider" />
+            <dl class="lesson-stats__list">
+                <dt class="lesson-stats__list-item-title">Dauer in Sekunden:</dt>
+                <dd class="lesson-stats__list-item-content" id="js-lesson-stats-time"></dd>
+                <dt class="lesson-stats__list-item-title">Anzahl falscher Antworten:</dt>
+                <dd class="lesson-stats__list-item-content" id="js-lesson-stats-incorrect"></dd>
+            </dl>
+            <button class="button__new" id="js-new" type="button" title="Zurück zur Auswahl">
+                <span class="sr-only">Zurück zur Auswahl</span>
+            </button>
+        </div>
+    </template>
+    <!-- ****** templates end ******-->
     <header class="header" id="header">
         <h1 class="title">
             <span class="title__icon">
@@ -79,7 +101,7 @@
             </span>
         </h1>
         <nav class="main-nav" id="js-main-nav">
-            <button class="main-nav__item" id="js-home">
+            <button class="main-nav__item" id="js-home" title="Zurück zur Auswahl">
                 <i class="fa-solid fa-house" aria-hidden="true"></i>
                 <span class="sr-only">Zurück zur Auswahl</span>
             </button>
