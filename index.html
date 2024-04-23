@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1x1</title>
+    <title>Das kleine Einmaleins</title>
     <link rel="stylesheet" href="./style.css?v=3">
     <link href="./assets/font-awesome/css/fontawesome.css" rel="stylesheet">
     <link href="./assets/font-awesome/css/solid.css" rel="stylesheet">
 </head>
 <body>
+    <template id="lesson-select__main-heading">
+        <h2 class="lesson-select__main-heading">Wähle eine Malfolge</h2>
+    </template>
     <template id="lesson-select">
         <div class="lesson-select">
-            <h2 class="lesson-select__title"></h2>
+            <h3 class="lesson-select__title"></h3>
             <button class="lesson-select__button" data-mode="regular">Vorwärts</button>
             <button class="lesson-select__button" data-mode="reverse">Rückwärts</button>
             <button class="lesson-select__button" data-mode="random">Zufall</button>
@@ -20,23 +23,26 @@
     </template>
     <template id="lesson-select--random">
         <div class="lesson-select">
-            <h2 class="lesson-select__title"></h2>
+            <h3 class="lesson-select__title"></h3>
             <button class="lesson-select__button" data-mode="random">Start</button>
         </div>
     </template>
     <template id="lesson-card">
-        <div class="card">
-            <div class="card__header">
+        <div class="card" id="js-card">
+            <h2 js="js-card-header" class="card__header" aria-live="polite">
                 <span class="card__number" id="js-factor-1">1</span>
-                <span class="card__symbol">x</span>
+                <span class="card__symbol">
+                    <span aria-hidden="true">x</span>
+                    <span class="sr-only">mal</span>
+                </span>
                 <span class="card__number" id="js-factor-2">1</span>
-            </div>
-            <form class="form" id="js-form" autocomplete="off">
+            </h2>
+            <form class="form" id="js-form" autocomplete="off" tabindex="0">
                 <fieldset class="form__fieldset">
                     <legend class="form__legend">Rechne aus</legend>
                     <label class="form__label"  htmlfor="js-input">
                         <span class="form__label-text">Lösung:</span>
-                        <input autocomplete="false" class="form__input" type="text" pattern="[0-9]*" inputmode="numberic" novalidate id="js-input" />
+                        <input autocomplete="false" class="form__input" type="text" pattern="[0-9]*" inputmode="numberic" novalidate id="js-input"/>
                     </label>
                     <button 
                         id="js-submit" 
@@ -47,8 +53,8 @@
                     </button>
                 </fieldset>
             </form>
-            <div class="response">
-                <span id="js-response" class="response__text"></span>
+            <div class="response" role="status" aria-live="polite">
+                <p id="js-response" class="response__text"></p>
                 <button class="button__next" id="js-next" type="button">
                     <span class="sr-only">Nächste Aufgabe</span>
                 </button>
@@ -63,10 +69,13 @@
             <span class="title__icon">
                 <i class="fa-solid fa-calculator" aria-hidden="true"></i>
             </span>
-            <span class="title__text">
+            <span class="title__text" aria-hidden="true">
                 Das <br />
                 kleine <br />
                 1x1
+            </span>
+            <span class="sr-only">
+                Das kleine Einmaleins
             </span>
         </h1>
         <nav class="main-nav" id="js-main-nav">

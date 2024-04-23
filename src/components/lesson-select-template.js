@@ -5,6 +5,7 @@ import exerciseTemplate from "./exercise-template";
 const lessonSelectTemplate = () => {
     const main = document.getElementById("main");
     const template = document.querySelector("#lesson-select");
+    const mainHeading = document.querySelector("#lesson-select__main-heading");
 
     const startLesson = (lessonType, mode) => {
         main.innerHTML = '';
@@ -13,6 +14,9 @@ const lessonSelectTemplate = () => {
         const lessonView = new LessonView(lessonData.data);
         lessonView.init();
     };
+
+    const mainHeadingClone = mainHeading.content.cloneNode(true);
+    main.appendChild(mainHeadingClone);
 
     for (let i = 0; i <= 10; i++) {
         const clone = template.content.cloneNode(true);

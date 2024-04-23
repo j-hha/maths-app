@@ -134,6 +134,14 @@ body {
     flex-wrap: wrap;
 }
 
+.lesson-select__main-heading {
+    flex: 0 0 100%;
+    text-align: center;
+    padding: var(--spacing-m);
+    font-weight:     font-weight: normal;
+    ;
+}
+
 .lesson-select__title {
     width: 100%;
     padding: var(--spacing-m);
@@ -175,6 +183,8 @@ body {
 }
 
 .card__header {
+    margin: 0;
+    font-weight: normal;
     padding: var(--spacing-l);
     font-size: 50px;
     color: white;
