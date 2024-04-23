@@ -66,10 +66,12 @@ class LessonView {
     }
 
     next() {
+        const { input } = this.elements;
         this.generateExercise();
         this.resetResponse();
         this.resetAnswer();
         this.updateView(false, false, 'next')
+        input.focus({ focusVisible: true });
     }
 
     checkAnswer(answer) {
@@ -131,8 +133,6 @@ class LessonView {
         } else {
             button.classList.remove(`button__${buttonType}--visible`);
         }
-
-        input.focus({ focusVisible: true });
     }
 
     validateForm(data) {
@@ -145,7 +145,7 @@ class LessonView {
 
     showResponse(message) {
         const { response } = this.elements;
-        response.innerHTML = message;
+        response.textContent = message;
     }
      
     setErrors(message) {
