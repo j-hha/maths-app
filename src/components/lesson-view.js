@@ -1,11 +1,12 @@
 import lessonSelectTemplate from "./lesson-select-template";
+import lessonStats from "./lesson-stats";
 
 class LessonView {
     constructor(lessonData) {
         this.progress = {
             exerciseIndex: 0,
-            correctAnswers: 0,
             incorrectAnswers: 0,
+            startTime: 0,
         };
 
         this.lessonData = lessonData;
@@ -25,6 +26,7 @@ class LessonView {
             next: document.getElementById('js-next'),
             submit: document.getElementById('js-submit'),
             newSession: document.getElementById('js-new'),
+            showStats: document.getElementById('js-stats'),
             home: document.getElementById('js-home'),
             mainNav: document.getElementById('js-main-nav'),
             main: document.getElementById("main"),
@@ -55,14 +57,15 @@ class LessonView {
     }
 
     init() {
-        const { form, input, next, newSession, home, mainNav} = this.elements;
+        const { form, input, next, showStats, home, mainNav} = this.elements;
         this.generateExercise();
         form.addEventListener('submit', this.handleSubmit);
         input.addEventListener('change', this.handleChange);
         next.addEventListener('click', this.next);
-        newSession.addEventListener('click', this.newLesson);
+        showStats.addEventListener('click', () => { lessonStats(this.progress, this.newLesson) });
         mainNav.classList.add('main-nav--visible');
         home.addEventListener('click', this.newLesson);
+        this.updateProgress({startTime: Date.now()})
     }
 
     next() {
@@ -76,7 +79,7 @@ class LessonView {
 
     checkAnswer(answer) {
         const { next, input, submit, form } = this.elements;
-        const { exerciseIndex, correctAnswers, incorrectAnswers } = this.progress;
+        const { exerciseIndex, incorrectAnswers } = this.progress;
         const result = this.lessonData[exerciseIndex].factor1 * this.lessonData[exerciseIndex].factor2;
         const cleanAnswer = parseInt(answer) !== 0? answer.replace(/^0+/, '') : answer.replace(/^0+/, '0');
 
@@ -88,7 +91,7 @@ class LessonView {
         }
 
         if (exerciseIndex === this.numOfLessons-1) {
-            this.updateView(true, true, 'new')
+            this.updateView(true, true, 'stats')
             this.showResponse(`Super! ${cleanAnswer} ist korrekt! Du hast alle Aufgaben gelöst.`);
         } else {
             this.updateView(true, true, 'next')
@@ -97,12 +100,11 @@ class LessonView {
 
         this.updateProgress({ 
                 exerciseIndex: exerciseIndex+1, 
-                correctAnswers: correctAnswers+1,
             });
     }
 
     updateView(disableForm=false, showButton=false, buttonType='') {
-        const { next, input, submit, form, newSession } = this.elements;        
+        const { next, input, submit, form, showStats } = this.elements;        
         input.disabled = disableForm;
         submit.disabled = disableForm;
         form.disabled = disableForm;
@@ -117,8 +119,8 @@ class LessonView {
             case 'next': 
                 button = next;
                 break;
-            case 'new':
-                button = newSession;
+            case 'stats':
+                button = showStats;
                 break;
             default:
                 button = null;

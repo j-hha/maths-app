@@ -299,15 +299,18 @@ body {
 }
 
 .button__new {
-    display: none;
+    display: flex;
+    margin: 0 auto;
     padding: var(--spacing-m);
-    color: var(--black);
+    color: var(--violet-light);
     transition: all .3s linear;
-    background-color: var(--orange);
-    border: 3px solid var(--orange);
+    background-color: var(--violet);
+    border: 3px solid var(--violet);
     overflow: hidden;
     align-items: center;
     justify-content: center; 
+    border-radius: var(--radius-inner);
+
 }
 
 .button__new:after {
@@ -324,11 +327,36 @@ body {
 }
 
 .button__new:active {
+    background-color: var(--violet);
+    border: 3px solid var(--violet);
+}
+
+.button__stats {
+    display: none;
+    padding: var(--spacing-m);
+    color: var(--black);
+    transition: all .3s linear;
+    background-color: var(--orange);
+    border: 3px solid var(--orange);
+    overflow: hidden;
+    align-items: center;
+    justify-content: center; 
+    font-size: 40px;
+}
+
+@media (hover: hover) {
+    .button__stats:hover {
+        background-color: var(--pink);
+        border-color: var(--pink);
+    }
+}
+
+.button__stats:active {
     background-color: var(--orange);
     border: 3px solid var(--orange);
 }
 
-.button__new--visible {
+.button__stats--visible {
     display: flex;
 }
 
@@ -341,6 +369,7 @@ body {
 
 .response__text {
     padding: var(--spacing-l);
+    margin: 0;
 }
 
 .sr-only {
@@ -352,3 +381,34 @@ body {
     white-space: nowrap; 
     width: 1px;
   }
+
+.lesson-stats {
+    border-radius: var(--radius-outer);
+    max-width: 500px;
+    margin: 0 auto;
+    flex: 1 1 300px;
+    background-color: rgba(255, 255, 255, .8);
+    padding: var(--spacing-l);
+}
+
+.lesson-stats__divider {
+    border: 1px solid var(--violet);
+}
+
+.lesson-stats__list {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.lesson-stats__list-item-title {
+    font-weight: bold;
+    grid-column: 1 / span 1;
+    padding: var(--spacing-m);
+    margin: 0;
+}
+
+.lesson-stats__list-item-content {
+    grid-column: 2 / span 1;    
+    padding: var(--spacing-m);
+    margin: 0;
+}
