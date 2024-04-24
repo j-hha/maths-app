@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Das kleine Einmaleins</title>
-    <link rel="stylesheet" href="./style.css?v=5">
+    <link rel="stylesheet" href="./style.css?v=6">
     <link href="./assets/font-awesome/css/fontawesome.css" rel="stylesheet">
     <link href="./assets/font-awesome/css/solid.css" rel="stylesheet">
 </head>
@@ -62,8 +62,8 @@
                     <span class="sr-only">Nächste Aufgabe</span>
                 </button>
                 <button class="button__stats" id="js-stats" type="button" title="Zur Auswertung">
+                    <span class="button__stats-text">Zur Auswertung</span>
                     <i class="fa-solid fa-ranking-star"></i>
-                    <span class="sr-only">Zur Auswertung</span>
                 </button>
             </div>
         </div>
@@ -90,7 +90,7 @@
                 <dd class="lesson-stats__list-item-content" id="js-lesson-stats-incorrect"></dd>
             </dl>
             <button class="button__new" id="js-new" type="button" title="Zurück zur Auswahl">
-                <span class="sr-only">Zurück zur Auswahl</span>
+                <span class="">Zurück zur Auswahl</span>
             </button>
         </div>
     </template>
@@ -117,6 +117,11 @@
         </nav>
     </header>
     <main class="main" id="main"></main>
-    <script src="dist/main.js?v=3" type="text/javascript"></script>
+    <footer class="footer">
+        For private use only.
+        <hr class="footer__divider"/>
+        Find the <a href="https://github.com/j-hha/maths-app">code on github</a>.
+    </footer>
+    <script src="dist/main.js?v=4" type="text/javascript"></script>
 </body>
 </html>
