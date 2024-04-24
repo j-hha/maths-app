@@ -405,10 +405,57 @@ body {
     grid-column: 1 / span 1;
     padding: var(--spacing-m);
     margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.lesson-stats__list-item-icon {
+    padding-right: var(--spacing-m);
 }
 
 .lesson-stats__list-item-content {
     grid-column: 2 / span 1;    
     padding: var(--spacing-m);
     margin: 0;
+}
+
+.lesson-stats__icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    padding: var(--spacing-l);
+}
+
+.lesson-stats__heading, 
+.lesson-stats__message {
+    padding: var(--spacing-m);
+    margin: 0;
+    text-align: center;
+}
+
+.lesson-stats__message-text {
+    padding: var(--spacing-m);
+    margin: 0;
+}
+
+.lesson-stats__message-icon {
+    transform: rotateY(0deg);
+    animation-name: spinningStar;
+    animation-duration: .5s;
+    animation-iteration-count: 5;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    color: var(--orange);
+}
+
+@keyframes spinningStar {
+    0% {
+      transform: rotateY(0);
+    }
+  
+    100% {
+        transform: rotateY(360deg);
+    }
 }

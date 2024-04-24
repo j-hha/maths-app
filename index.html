@@ -72,12 +72,21 @@
     <template id="lesson-stats">
         <div class="lesson-stats">
             <h2 class="lesson-stats__heading">So lief Deine Übungsrunde</h2>
-            <span class="lesson-stats__message" id="js-lesson-stats-message"></span>
+            <div class="lesson-stats__message">
+                <div class="lesson-stats__icon-container" id="js-lesson-stats-icon-container"></div>
+                <p class="lesson-stats__message-text" id="js-lesson-stats-message"></p>
+            </div>
             <hr class="lesson-stats__divider" />
             <dl class="lesson-stats__list">
-                <dt class="lesson-stats__list-item-title">Dauer in Sekunden:</dt>
+                <dt class="lesson-stats__list-item-title">
+                    <i class="fa-solid fa-stopwatch lesson-stats__list-item-icon" aria-hidden="true"></i>
+                    <span>Dauer in Sekunden:</span>
+                </dt>
                 <dd class="lesson-stats__list-item-content" id="js-lesson-stats-time"></dd>
-                <dt class="lesson-stats__list-item-title">Anzahl falscher Antworten:</dt>
+                <dt class="lesson-stats__list-item-title">
+                    <i class="fa-solid fa-square-xmark lesson-stats__list-item-icon" ></i>
+                    <span>Anzahl falscher Antworten:</span>
+                </dt>
                 <dd class="lesson-stats__list-item-content" id="js-lesson-stats-incorrect"></dd>
             </dl>
             <button class="button__new" id="js-new" type="button" title="Zurück zur Auswahl">
@@ -104,10 +113,6 @@
             <button class="main-nav__item" id="js-home" title="Zurück zur Auswahl">
                 <i class="fa-solid fa-house" aria-hidden="true"></i>
                 <span class="sr-only">Zurück zur Auswahl</span>
-            </button>
-            <button class="main-nav__item" id="js-timer">
-                <i class="fa-solid fa-stopwatch" aria-hidden="true"></i>
-                <span class="sr-only">Zeit stoppen</span>
             </button>
         </nav>
     </header>

@@ -1,3 +1,24 @@
+const getIcons = (incorrectAnswers) => {
+    const icon = '<i class="fa-solid fa-star lesson-stats__message-icon" aria-hidden="true"></i>';
+
+    const numOfRepetitions = {
+        '0': 4,
+        '1': 3,
+        '2': 2,
+        '3': 1,
+    };
+
+    let iconHTML = icon;
+
+    if (numOfRepetitions[incorrectAnswers] !== undefined) {
+        for (let i=0; i<numOfRepetitions[incorrectAnswers]; i++) {
+            iconHTML = iconHTML+icon;
+        }
+    }
+
+    return iconHTML;
+}
+
 const setView = ({ incorrectAnswers, startTime }, newLessonCB) => {
     const messages = {
         '0': 'Perfekt! Alle Deine Antworten waren richtig. Das Üben zahlt sich aus.',
@@ -6,6 +27,9 @@ const setView = ({ incorrectAnswers, startTime }, newLessonCB) => {
         '3': 'Gut! Die Mehrheit Deiner Antworten waren richtig. Übe noch ein bisschen, dann sind bestimmt bald alle Antworten korrekt.',
         'default': 'Geschafft! Du hast alle Lösungen herausgefunden. Ein bisschen mehr Übung brauchst aber Du noch. Bleib dran.',
     }
+
+    const iconContainerNode = document.getElementById('js-lesson-stats-icon-container');
+    iconContainerNode.innerHTML = getIcons(incorrectAnswers);
     const messageNode = document.getElementById('js-lesson-stats-message');
     messageNode.innerHTML = messages[incorrectAnswers.toString()] !== undefined? messages[incorrectAnswers.toString()] : messages.default;
     
