@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Das kleine Einmaleins</title>
-    <link rel="stylesheet" href="./style.css?v=6">
+    <link rel="stylesheet" href="./style.css?v=7">
     <link href="./assets/font-awesome/css/fontawesome.css" rel="stylesheet">
     <link href="./assets/font-awesome/css/solid.css" rel="stylesheet">
 </head>
@@ -59,11 +59,12 @@
             <div class="response" role="status" aria-live="polite">
                 <p id="js-response" class="response__text"></p>
                 <button class="button__next" id="js-next" type="button">
+                    <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
                     <span class="sr-only">Nächste Aufgabe</span>
                 </button>
                 <button class="button__stats" id="js-stats" type="button" title="Zur Auswertung">
                     <span class="button__stats-text">Zur Auswertung</span>
-                    <i class="fa-solid fa-ranking-star"></i>
+                    <i class="fa-solid fa-ranking-star" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
@@ -84,7 +85,7 @@
                 </dt>
                 <dd class="lesson-stats__list-item-content" id="js-lesson-stats-time"></dd>
                 <dt class="lesson-stats__list-item-title">
-                    <i class="fa-solid fa-square-xmark lesson-stats__list-item-icon" ></i>
+                    <i class="fa-solid fa-square-xmark lesson-stats__list-item-icon" aria-hidden="true"></i>
                     <span>Anzahl falscher Antworten:</span>
                 </dt>
                 <dd class="lesson-stats__list-item-content" id="js-lesson-stats-incorrect"></dd>

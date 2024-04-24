@@ -274,11 +274,6 @@ body {
     overflow: hidden;
     align-items: center;
     justify-content: center;
-}
-
-.button__next:after {
-    display: block;
-    content: '\232A';
     font-size: 40px;
 }
 
@@ -423,6 +418,8 @@ body {
     grid-column: 2 / span 1;    
     padding: var(--spacing-m);
     margin: 0;
+    display: flex;
+    align-items: center;
 }
 
 .lesson-stats__icon-container {
@@ -454,8 +451,8 @@ body {
 .lesson-stats__message-icon {
     transform: rotateY(0deg);
     animation-name: spinningStar;
-    animation-duration: .5s;
-    animation-iteration-count: 5;
+    animation-duration: .3s;
+    animation-iteration-count: 4;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
     animation-direction: alternate;
